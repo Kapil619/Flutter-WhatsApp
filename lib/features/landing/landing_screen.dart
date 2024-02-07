@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:whatsapp/common/widgets/custom_button.dart';
+import 'package:whatsapp/features/auth/screens/login_screen.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
+
+  void navigateToLoginSceen(BuildContext context) {
+    Navigator.pushNamed(context, LoginScreen.routeName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +47,9 @@ class LandingScreen extends StatelessWidget {
             ),
             SizedBox(
                 width: size.width * 0.75,
-                child:
-                    CustomButton(onPressed: () {}, text: 'AGREE AND CONTINUE'))
+                child: CustomButton(
+                    onPressed: () => navigateToLoginSceen(context),
+                    text: 'AGREE AND CONTINUE'))
           ],
         ),
       ),
