@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp/features/landing/landing_screen.dart';
 import 'package:whatsapp/firebase_options.dart';
 import 'package:whatsapp/screens/mobile_layout_screen.dart';
 import 'package:whatsapp/screens/web_layout_screen.dart';
@@ -19,14 +20,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'WhatsApp Clone',
-        theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: const Color(0xFF101010),
-        ),
-        home: const ResponsiveLayout(
-          mobileScreenLayout: MobileLayoutScreen(),
-          webScreenLayout: WebLayoutScreen(),
-        ));
+      debugShowCheckedModeBanner: false,
+      title: 'WhatsApp Clone',
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xFF101010),
+      ),
+      home: const LandingScreen(),
+    );
   }
 }
