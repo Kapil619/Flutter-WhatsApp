@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whatsapp/features/auth/controller/auth_controller.dart';
 
-class OTPScreen extends StatefulWidget {
+class OTPScreen extends ConsumerWidget {
   static const String routeName = '/otp-screen';
   final String verificationId;
   const OTPScreen({required this.verificationId, super.key});
 
-  @override
-  State<OTPScreen> createState() => _OTPScreenState();
-}
+  void verifyOTP(WidgetRef ref, BuildContext context, String userOTP) {
+    ref
+        .read(authControllerProvider)
+        .verifyOTP(context, verificationId, userOTP);
+  }
 
-class _OTPScreenState extends State<OTPScreen> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -34,7 +37,11 @@ class _OTPScreenState extends State<OTPScreen> {
                   hintStyle: TextStyle(fontSize: 30),
                 ),
                 keyboardType: TextInputType.number,
-                onChanged: (val) {},
+                onChanged: (val) {
+                  if (val.length == 6) {
+                    verifyOTP(ref, context, val.trim());
+                  }
+                },
               ),
             ),
           ],
