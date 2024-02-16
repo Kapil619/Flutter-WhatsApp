@@ -2,6 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/colors.dart';
+import 'package:whatsapp/common/widgets/error.dart';
+import 'package:whatsapp/common/widgets/loader.dart';
+import 'package:whatsapp/features/auth/controller/auth_controller.dart';
 import 'package:whatsapp/features/landing/landing_screen.dart';
 import 'package:whatsapp/firebase_options.dart';
 import 'package:whatsapp/router.dart';
@@ -17,11 +20,11 @@ void main() async {
   runApp(ProviderScope(child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'WhatsApp Clone',
@@ -32,7 +35,18 @@ class MyApp extends StatelessWidget {
         ),
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: const LandingScreen(),
+      home: ref.watch(userDataAuthProvider).when(
+            data: (user) {
+              if (user == null) {
+                return const LandingScreen();
+              }
+              return const MobileLayoutScreen();
+            },
+            error: (err, trace) {
+              return ErrorScreen(error: err.toString());
+            },
+            loading: () => const Loader(),
+          ),
     );
   }
 }
