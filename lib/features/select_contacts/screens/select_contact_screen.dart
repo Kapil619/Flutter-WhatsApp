@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/common/widgets/error.dart';
 import 'package:whatsapp/common/widgets/loader.dart';
 import 'package:whatsapp/features/select_contacts/controller/select_contact_controller.dart';
-import 'package:whatsapp/widgets/contacts_list.dart';
+import 'package:whatsapp/features/chat/widgets/contacts_list.dart';
 
 class selectContactsScreen extends ConsumerWidget {
   static const String routeName = '/select-contacts';
