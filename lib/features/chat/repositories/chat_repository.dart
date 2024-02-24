@@ -209,7 +209,7 @@ class ChatRepository {
         case MessageEnum.audio:
           contactMsg = '🎵  Image';
           break;
-        case MessageEnum.video:
+        case MessageEnum.gif:
           contactMsg = 'GIF';
           break;
         default:
