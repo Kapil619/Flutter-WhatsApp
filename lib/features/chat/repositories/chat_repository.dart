@@ -204,10 +204,10 @@ class ChatRepository {
           contactMsg = '📷 Image';
           break;
         case MessageEnum.video:
-          contactMsg = '📸 Image';
+          contactMsg = '📸 Video';
           break;
         case MessageEnum.audio:
-          contactMsg = '🎵  Image';
+          contactMsg = '🎵  Audio';
           break;
         case MessageEnum.gif:
           contactMsg = 'GIF';

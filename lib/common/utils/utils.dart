@@ -29,3 +29,17 @@ Future<File?> pickImageFromfGallery(BuildContext context) async {
   }
   return image;
 }
+
+Future<File?> pickVideoFromfGallery(BuildContext context) async {
+  File? video;
+  try {
+    final pickedVideo =
+        await ImagePicker().pickVideo(source: ImageSource.gallery);
+    if (pickedVideo != null) {
+      video = File(pickedVideo.path);
+    }
+  } catch (e) {
+    showSnackbar(context: context, content: e.toString(), color: Colors.red);
+  }
+  return video;
+}
