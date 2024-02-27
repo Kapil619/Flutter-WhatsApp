@@ -47,10 +47,13 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
   }
 
   void selectVideo() async {
-    File? video = await pickVideoFromfGallery(context);
-    if (video != null) {
-      sendFileMessage(video, MessageEnum.video);
-    }
+    showSnackbar(
+        context: context, content: 'Sharing Videos is not available yet!');
+    //was not able to implement video sharing
+    // File? video = await pickVideoFromfGallery(context);
+    // if (video != null) {
+    //   sendFileMessage(video, MessageEnum.video);
+    // }
   }
 
   @override
@@ -144,9 +147,9 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
             backgroundColor: const Color(0xFF128C7E),
             radius: 25,
             child: GestureDetector(
+              onTap: sendTextMessage,
               child: Icon(isShowSendButton ? Icons.send : Icons.mic,
                   color: Colors.white),
-              onTap: sendTextMessage,
             ),
           ),
         )
