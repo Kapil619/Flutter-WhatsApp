@@ -1,5 +1,6 @@
 import 'dart:io';
 
+// import 'package:enough_giphy_flutter/enough_giphy_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -43,3 +44,14 @@ Future<File?> pickVideoFromfGallery(BuildContext context) async {
   }
   return video;
 }
+
+// Future<GiphyGif?> pickGIF(BuildContext context) async {
+//   GiphyGif? gif;
+//   try {
+//     gif = await Giphy.getGif(
+//         context: context, apiKey: "u0Wrzpg2lC7DM57GpGgbY18iRmDhIqlk");
+//   } catch (e) {
+//     showSnackbar(context: context, content: e.toString(), color: Colors.red);
+//   }
+//   return gif;
+// }

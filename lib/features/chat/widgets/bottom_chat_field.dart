@@ -59,6 +59,17 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
     // }
   }
 
+  void selectGIF() async {
+    // final gif = await pickGIF(context);
+    // if (gif != null) {
+    //   ref
+    //       .read(chatControllerProvider)
+    //       .sendGIFMessage(context, gif.url, widget.receiverUserId);
+    // }
+    showSnackbar(
+        context: context, content: 'Sharing GIFs is not available yet!');
+  }
+
   void hideEmojiContainer() {
     setState(() {
       isShowEmojiContainer = false;
@@ -128,7 +139,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                             ),
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: selectGIF,
                             icon: const Icon(
                               Icons.gif,
                               color: Colors.grey,
